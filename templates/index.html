@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>File Translator</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f4f4;
+            padding: 40px;
+        }
+        .box {
+            background: white;
+            padding: 20px;
+            width: 400px;
+            margin: auto;
+            border-radius: 8px;
+        }
+        input, select, button {
+            width: 100%;
+            margin: 10px 0;
+            padding: 8px;
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h2>File Translation</h2>
+
+    <form method="POST" enctype="multipart/form-data" action="{% url 'translate_file' %}">
+        {% csrf_token %}
+
+        <label>Upload File (.txt / .docx)</label>
+        <input type="file" name="file" required>
+
+        <label>Source Language (e.g. en, hi, fr)</label>
+        <input type="text" name="source_lang" placeholder="en" required>
+
+        <label>Destination Language</label>
+        <input type="text" name="dest_lang" placeholder="hi" required>
+
+        <button type="submit">Translate & Download</button>
+    </form>
+</div>
+
+</body>
+</html>
